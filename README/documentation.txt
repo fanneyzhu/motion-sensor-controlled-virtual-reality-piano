@@ -1,0 +1,48 @@
+documentation.txt
+
+Andy Tran, Fanney Zhu
+andytran@college.harvard.edu, fanneyzhu@college.harvard.edu
+
+CS50 Final Project
+Leap Motion Piano (Virtual Steinway) Program User Documentation 
+Application is in Folder: PlayPiano
+
+In essence, we have created a virtual piano that can be interacted via a Leap Motion 
+sensor. The piano has three octaves and once the program is opened, you have the control 
+of a piano on any computer with literally your fingertips. 
+
+The program is interfaced with a Leap Motion Controller, which functions as your motion 
+sensor that detects your hands’ movements. The Leap Motion controller is a small USB 
+connected peripheral device that can be placed on any flat surface or table top pointing 
+upwards. The Leap motion controller is able to detect your motion by having two 
+monochromatic infrared cameras and three LEDs that face up to observe a hemisphere volume 
+approximately 1 meter radius from the motion sensor’s point of origin. So as long as your 
+hands are within the 1 meter radius of the detection hemisphere of the Leap motion sensor, 
+your hand would be able to be tracked by the sensor.
+
+To use the program, you would first have to obtain a Leap Motion Sensor, which can be 
+purchased from the store website at http://store-us.leapmotion.com/. Once obtained, the 
+software package needed to install the drivers and software to run the device can be 
+downloaded at https://www.leapmotion.com/setup, and version 2 (Leap v2) is available for 
+Mac and Windows. If desiring to develop new applications and software with the Leap Motion 
+device, one can download the Software Development Kit (SDK) that contains the necessary 
+packages and Application Programming Interfaces (APIs) that are needed for code (we will 
+talk about the specific APIs and functions that are used in the design.txt file). Once the 
+software/drivers are installed to use the device, one should be able to plug in the Leap 
+Motion sensor in a USB port and be good to go!
+
+Once your Leap Motion Sensor is set-up and placed on a clean flat surface (or uncluttered 
+desk), our program is already compiled and ready to run via doubling-clicking the 
+Application file for Mac users or .exe executable file for Windows users. Once the program 
+is open, you should see a Virtual Steinway & Sons Grand Piano with three octaves. Simply 
+place your hands roughly six inches to a feet above the Leap Motion Controller and you 
+should be able see your hand appear on screen. Once your hands appear on the screen, what 
+you do should be pretty self-explanatory. Simply press your fingers down on the key with 
+as much force as you would naturally use on a piano (if you press down too slowly, i.e, 
+without enough force the key will not go down).
+
+To summarize briefly, since we have precompiled our code into Application and executable 
+files for Mac and Windows respectively, to use our virtual piano program, all you need is 
+to set up the leap motion sensor and then simply double-click the file to run. To play, 
+simply place your hands at a comfortable distance above the piano and press down the keys 
+as you would naturally to play!

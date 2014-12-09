@@ -1,0 +1,102 @@
+designer.txt 
+
+Fanney Zhu, Andy Tran
+fanneyzhu@college.harvard.edu, andytran@college.harvard.edu
+
+CS50 Final Project
+Leap Motion Piano (Virtual Steinway) Design Document
+
+In high-level overview, in order to create our Leap Motion sensor-controlled virtual piano, 
+we utilized a Game Engine software called Unity to create our graphical User interface (to 
+draw our piano and hands on screen) and the Leap Motion API to have the code needed to 
+perform motion sensing (to track our hand location in the virtual reality space, detect our 
+movements, and recognize our finger key tap gesture to know when a piano key is pressed). 
+
+More specifically, to create our our piano keys we used a software called AutoCAD to use 
+computer-aided design (CAD) to draw the three-dimension model of our white and black piano 
+keys and exported these models as a .fbx file. We used CAD Software (you can use any standard 
+CAD software like Solidworks or AutoCAD to draw the models) to draw our models because we 
+were aiming for high resolution three-dimensional images to give our program a realistic feel.  
+Once we had the three dimensional models of our piano designed, we stored them for later use 
+after we set up our graphical user interface framework powered by the Unity Game Engine 
+Software to integrate code with graphics.
+
+The rest of the program is developed within the Unity Game Engine Software in which our CAD 
+model graphics are integrated with Leap motion APIs and our code in which we used C# to write 
+in. We decided to use Unity Game Engine to develop our program because in this framework we 
+are able to easily build a coherent three dimensional graphical interface within an environment 
+in which we can add animation and code to functionalize each object in our scene (scene is the 
+term in the Unity Game Engine to define the game window--essentially what you see when you 
+start the software).
+
+To begin creating a program that interfaces Leap motion sensor tracking to detect our hands in 
+the software, we imported Leap Motion V2 Skeletal Assets from the asset store in the Unity Game 
+Engine, which contained hand models, some of which we used to animate the user’s hands, 
+including a “Rigid Hand” component that interacts with Unity’s physics engine.
+
+To start, within Unity’s game engine environment we used the CAD files that we previously 
+designed to assemble the three octave piano. Since each .fbx file is recognized as an object 
+file in Unity, we are able to add C# and animation scripts in each of the piano key objects to 
+respectively detect our hand motion/gestures and to display in real-time the physics effects 
+upon our finger collision with the the piano keys.
+
+In our code for the game we first had to import the several essential libraries into our 
+program including the UnityEngine library (which allows us to utilize Unity’s graphical user 
+interface as well as Unity’s animation and physics functions), the System.Collections library 
+(which contains essential C# functions akin to C’s stdio.h library), and Leap library (which 
+contains the functions that can use Leap motion API to track and detect our hand motio)n. 
+
+Explanation of Hand Detection:
+Once all the essential libraries are imported into our code, the initial and among the most 
+important task to achieve is to have our program detect our hands. We utilized the Leap motion 
+API to create and initialize a controller object to detect our hand movement. We then configured 
+the controller to detect specifically a key tap gesture (defined by the leap motion API as the 
+gesture that is akin to pressing down on a button). We chose to detect only the key tap gesture 
+because our entire program is a piano motion of our fingers pressing down on the key is most 
+accurately mirrored by a specific gesture in the leap motion API called “key tap gesture”. We 
+also configured specific parameters including MinimumDownVelocity, which tells our leap motion 
+controller to only recognize a movement as a key tap gesture if the velocity of the finger going 
+down is a specific speed. To draw our hand model in the screen, we utilized Unity’s Leap motion 
+skeletal asset which essentially is a package of files that contains among many scripts three-
+dimensional models of hands that the screen would display as hand objects once our hands are 
+detected.
+
+Explanation of finger-key interaction:
+In order to interact with the piano keys, we added a collider component (a component of Unity’s 
+API) within each key to detect collisions with other “rigid” objects on the screen, which would 
+be the user’s hands in this case. The white keys contained a “Box Collider” that was scaled to 
+the middle region of the bottom half of the key, which allows the piano key to detect hand 
+movements that are key tap gestures in the middle region of the bottom half of the key. The black 
+keys contained a “Mesh Collider”, which covers the entire key. We chose to design the colliders 
+of the white and black keys this way because it minimized the probability that adjacent keys the 
+user did not intend to play would be pressed down by accident. We then used the ToTriggerStay 
+function included in Unity’s physics engine, which would be called whenever a rigid body was 
+within (e.g. whenever the user pressed the key) the collider component of the key, to invoke 
+sound and animation upon collision with user’s hands via the key tap gesture. More specifically, 
+we first got the frame of the controller. We then retrieved any key tap gestures detected in the 
+frame. If no key tap gestures are detected, then the key would not be played. If key tap gestures 
+are detected, for each key tap gesture detected, the console will display the key the user pressed, 
+play the corresponding note, and move the appropriate piano key.
+
+Explanation of Sound generation:
+We imported a sound file that contained the pitch of middle C. We then manipulated the pitch 
+correspondingly using a mathematical function for other notes. This permitted us to only import 
+one sound file instead of many sound files for all the different keys in the piano. Since one half 
+note up from C (which would be C#) is 1/12 root higher in pitch and two half notes up from C (which 
+would be D) is 2/12 root higher etc., we used the variable keyPitch to specify the pitch of the key 
+by assigning the corresponding integer values to the variable keyPitch (e.g. keyPitch would equal 0 
+for middle C, 1 for C#, 2 for D, etc.). Then, using the Play function, the corresponding note would 
+be played for the corresponding key that the user pressed.
+
+Explanation of Animation:
+To animate the key to look like it is moving as if it is actually being pressed, we added an 
+animation component to each key. We altered the rotation of each key to emulate the physics of the 
+piano (e.g. the key moving down). This animation would then be played every time the user pressed 
+the key.
+
+After we have completed building the entire piano, and added the functionality to each of the piano 
+key objects, we adorned our piano with a background, structure that emulates the platform of the 
+piano, and an image of a Steinway logo to brand our virtual musical instrument. Finally we compiled 
+and built the complete file containing our code, three-dimensional graphical interface, and 
+animations with sound in an application and executable file, respectively for Mac and Windows.
+
